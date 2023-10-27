@@ -622,6 +622,13 @@ public class MemoryPlacementDemo extends javax.swing.JFrame {
             }
         }
         colorCreator();
+        removeButton.setEnabled(false);
+        addButton.setEnabled(false);
+        ramTextField.setEditable(false);
+        CHTextField.setEditable(false);
+        SCTextField.setEditable(false);
+        startButton.setEnabled(false);
+        memoryTable.setEnabled(false);
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
