@@ -628,7 +628,10 @@ public class MemoryPlacementDemo extends javax.swing.JFrame {
     }//GEN-LAST:event_removeButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        // TODO add your handling code here:
+        memoryTbl = (DefaultTableModel) memoryTable.getModel();
+        int row = memoryTbl.getRowCount()+1;
+        Object[] rowData = {("Job " + row)};
+        memoryTbl.addRow(rowData);
     }//GEN-LAST:event_addButtonActionPerformed
     
 
