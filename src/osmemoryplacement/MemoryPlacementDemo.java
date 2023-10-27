@@ -23,6 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -63,6 +64,11 @@ public class MemoryPlacementDemo extends javax.swing.JFrame {
         BoxLayout boxLayout = new BoxLayout(ramContainer, BoxLayout.Y_AXIS);
         ramContainer.setLayout(boxLayout);
         ramContainer.setPreferredSize(new Dimension(190, 302));
+        
+        ((DefaultTableCellRenderer)schedTable.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.RIGHT);
+        schedTable.setEnabled(false);
+        ((DefaultTableCellRenderer)schedTable2.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.RIGHT);
+        schedTable2.setEnabled(false);
     }
     
     /**
@@ -109,23 +115,23 @@ public class MemoryPlacementDemo extends javax.swing.JFrame {
         memoryTable.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         memoryTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Job 1",  new Integer(500),  new Integer(3), null, null, null, null, null, null, null},
-                {"Job 2",  new Integer(250),  new Integer(4), null, null, null, null, null, null, null},
-                {"Job 3",  new Integer(200),  new Integer(5), null, null, null, null, null, null, null},
-                {"Job 4",  new Integer(350),  new Integer(3), null, null, null, null, null, null, null},
-                {"Job 5",  new Integer(60),  new Integer(5), null, null, null, null, null, null, null},
-                {"Job 6",  new Integer(300),  new Integer(3), null, null, null, null, null, null, null},
-                {"Job 7",  new Integer(400),  new Integer(2), null, null, null, null, null, null, null}
+                {"Job 1",  new Integer(500),  new Integer(3), null, null, null, null, null, null, null, null},
+                {"Job 2",  new Integer(250),  new Integer(4), null, null, null, null, null, null, null, null},
+                {"Job 3",  new Integer(200),  new Integer(5), null, null, null, null, null, null, null, null},
+                {"Job 4",  new Integer(350),  new Integer(3), null, null, null, null, null, null, null, null},
+                {"Job 5",  new Integer(60),  new Integer(5), null, null, null, null, null, null, null, null},
+                {"Job 6",  new Integer(300),  new Integer(3), null, null, null, null, null, null, null, null},
+                {"Job 7",  new Integer(400),  new Integer(2), null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Job", "Size/KB", "Time", "Unit", "", "", "", "", "", ""
+                "Job", "Size/KB", "Time", "Unit", "", "", "", "", "", "", ""
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, false, false, false, false, false, false, false
+                false, true, true, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -144,6 +150,7 @@ public class MemoryPlacementDemo extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(memoryTable);
         if (memoryTable.getColumnModel().getColumnCount() > 0) {
+            memoryTable.getColumnModel().getColumn(1).setPreferredWidth(75);
             memoryTable.getColumnModel().getColumn(2).setPreferredWidth(50);
             memoryTable.getColumnModel().getColumn(3).setResizable(false);
             memoryTable.getColumnModel().getColumn(3).setPreferredWidth(50);
@@ -159,6 +166,8 @@ public class MemoryPlacementDemo extends javax.swing.JFrame {
             memoryTable.getColumnModel().getColumn(8).setPreferredWidth(50);
             memoryTable.getColumnModel().getColumn(9).setResizable(false);
             memoryTable.getColumnModel().getColumn(9).setPreferredWidth(50);
+            memoryTable.getColumnModel().getColumn(10).setResizable(false);
+            memoryTable.getColumnModel().getColumn(10).setPreferredWidth(50);
         }
 
         ramPanel.setBackground(new java.awt.Color(238, 238, 138));
@@ -218,7 +227,7 @@ public class MemoryPlacementDemo extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11", "Title 12", "Title 13", "null", "null", "null", "null"
+                "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -231,8 +240,25 @@ public class MemoryPlacementDemo extends javax.swing.JFrame {
         });
         schedTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         schedTable.setRowHeight(50);
-        schedTable.setTableHeader(null);
+        schedTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(schedTable);
+        if (schedTable.getColumnModel().getColumnCount() > 0) {
+            schedTable.getColumnModel().getColumn(0).setResizable(false);
+            schedTable.getColumnModel().getColumn(1).setResizable(false);
+            schedTable.getColumnModel().getColumn(2).setResizable(false);
+            schedTable.getColumnModel().getColumn(3).setResizable(false);
+            schedTable.getColumnModel().getColumn(5).setResizable(false);
+            schedTable.getColumnModel().getColumn(7).setResizable(false);
+            schedTable.getColumnModel().getColumn(8).setResizable(false);
+            schedTable.getColumnModel().getColumn(9).setResizable(false);
+            schedTable.getColumnModel().getColumn(10).setResizable(false);
+            schedTable.getColumnModel().getColumn(11).setResizable(false);
+            schedTable.getColumnModel().getColumn(12).setResizable(false);
+            schedTable.getColumnModel().getColumn(13).setResizable(false);
+            schedTable.getColumnModel().getColumn(14).setResizable(false);
+            schedTable.getColumnModel().getColumn(15).setResizable(false);
+            schedTable.getColumnModel().getColumn(16).setResizable(false);
+        }
 
         jScrollPane4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
@@ -242,7 +268,7 @@ public class MemoryPlacementDemo extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11", "Title 12", "Title 13", "Title 14", "null", "null", "null"
+                "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -255,8 +281,27 @@ public class MemoryPlacementDemo extends javax.swing.JFrame {
         });
         schedTable2.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         schedTable2.setRowHeight(50);
-        schedTable2.setTableHeader(null);
+        schedTable2.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(schedTable2);
+        if (schedTable2.getColumnModel().getColumnCount() > 0) {
+            schedTable2.getColumnModel().getColumn(0).setResizable(false);
+            schedTable2.getColumnModel().getColumn(1).setResizable(false);
+            schedTable2.getColumnModel().getColumn(2).setResizable(false);
+            schedTable2.getColumnModel().getColumn(3).setResizable(false);
+            schedTable2.getColumnModel().getColumn(4).setResizable(false);
+            schedTable2.getColumnModel().getColumn(5).setResizable(false);
+            schedTable2.getColumnModel().getColumn(6).setResizable(false);
+            schedTable2.getColumnModel().getColumn(7).setResizable(false);
+            schedTable2.getColumnModel().getColumn(8).setResizable(false);
+            schedTable2.getColumnModel().getColumn(9).setResizable(false);
+            schedTable2.getColumnModel().getColumn(10).setResizable(false);
+            schedTable2.getColumnModel().getColumn(11).setResizable(false);
+            schedTable2.getColumnModel().getColumn(12).setResizable(false);
+            schedTable2.getColumnModel().getColumn(13).setResizable(false);
+            schedTable2.getColumnModel().getColumn(14).setResizable(false);
+            schedTable2.getColumnModel().getColumn(15).setResizable(false);
+            schedTable2.getColumnModel().getColumn(16).setResizable(false);
+        }
 
         startButton.setText("Start");
         startButton.addActionListener(new java.awt.event.ActionListener() {
@@ -404,15 +449,12 @@ public class MemoryPlacementDemo extends javax.swing.JFrame {
                             .addComponent(jLabel9))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel10)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(testLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(removeButton)
-                            .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(testLabel)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(removeButton)
+                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
